@@ -1,9 +1,9 @@
 rolkin's configs
 ================
 
-### Bug fixes
+## Bug fixes
 
-Please feel free to contact me for any bug fixes
+Please feel free to [contact](http://github.com/rolkin/configs) me for any bug fixes
 
 
 -----------
