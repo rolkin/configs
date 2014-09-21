@@ -1,0 +1,315 @@
+# set modifier key, Mod4 is Windows key
+set $mod Mod4
+
+# set font
+font pango: Ubuntu, Terminus Semi-Condensed Bold 12
+
+# set color variables
+#####################
+set $main_brdr  #0072b1
+set $main_bg    #0072b1
+set $main_text  #F4F4F4
+set $main_indic #2e9ef4
+
+set $unf_brdr   #131313
+set $unf_bg     #555555
+set $unf_text   #888888
+set $unf_indic  #292d2e
+
+set $urg_brdr   #AA4241
+set $urg_bg     #AA4241
+set $urg_text   #FFFFFF
+set $urg_indic  #900000
+
+set $bar_sep    #EEEEEE
+#####################
+#####################
+
+
+## Window decoration
+#####################
+# class border background text indicator
+client.focused           $main_brdr   $main_bg   $main_text   $main_indic
+client.focused_inactive  $unf_brdr    $unf_bg    $unf_text    $unf_indic
+client.unfocused         $unf_brdr    $unf_bg    $unf_text    $unf_indic
+client.urgent            $urg_brdr    $urg_bg    $urg_text    $urg_indic
+
+# remove vertical and horizontal borders
+hide_edge_borders both
+#####################
+#####################
+
+
+## i3 session bindings
+## useful for reloading configs
+#####################
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# exit i3 (logs you out of your X session)
+#bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. End XSession and return to console?.' -b 'Yes, exit i3' 'i3-msg exit'"
+# create exit mode
+mode "[E]xit, [R]eboot, [P]oweroff" {
+        bindsym r exec systemctl reboot
+        bindsym e exit
+        bindsym p exec systemctl poweroff
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+bindsym $mod+Shift+e mode "[E]xit, [R]eboot, [P]oweroff"
+#####################
+#####################
+
+
+## Application bindings
+#####################
+# start terminals
+bindsym $mod+Return exec xfce4-terminal
+
+#Thunar File Manager
+bindsym $mod+t exec thunar
+
+# start Google Chrome
+bindsym $mod+g exec google-chrome-stable
+#####################
+#####################
+
+
+## Script bindings
+#####################
+# start dmenu (a program launcher) this loads all available executables
+#bindsym $mod+d exec dmenu_run
+
+# i3-dmenu-desktop which only displays applications with .desktop
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+
+# lock screen
+bindsym $mod+Control+l exec --no-startup-id sh ~/bin/i3lock.sh
+bindsym Mod1+Control+l exec --no-startup-id sh ~/bin/i3lock.sh
+
+# screenshot
+bindsym Print exec --no-startup-id ~/bin/print_screen.sh
+#####################
+#####################
+
+
+## Keyboard bindings
+#####################
+# backlight Fn keys
+bindsym XF86KbdBrightnessDown exec --no-startup-id asus-kbd-backlight down
+bindsym XF86KbdBrightnessUp exec --no-startup-id asus-kbd-backlight up
+
+# volume Fn keys
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer sset Master 10%+
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer sset Master 10%-
+bindsym XF86AudioMute exec -no-startup-id amixer sset Master 0%
+#####################
+#####################
+
+
+## Window Management
+#####################
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+bindsym $mod+z focus child
+
+# cycle through windows
+bindsym $mod+Tab focus right
+bindsym $mod+Shift+Tab focus left
+
+# change focus
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Up focus up
+bindsym $mod+Down focus down
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+#####################
+#####################
+
+
+## Floating Window management
+#####################
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym semicolon resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+# binding for resize floating windows
+bindsym $mod+r mode "resize"
+#####################
+#####################
+
+
+## Workspaces
+#####################
+# set workspace name vars
+set $ws1 "1: www"
+set $ws2 "2: </code>"
+set $ws3 "3: ♪ ♫"
+set $ws4 "4: vBox"
+set $ws5 "5: extra"
+
+# go to next workspace
+bindsym $mod+Mod1+Right workspace next
+bindsym $mod+Mod1+Left workspace prev
+bindsym $mod+Mod1+Up workspace back_and_forth
+bindsym $mod+Mod1+Down workspace back_and_forth
+
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+#####################
+#####################
+
+
+## i3bar
+#####################
+bar {
+    colors {
+        background $unf_brdr
+        statusline $main_bg
+        separator  $bar_sep
+
+        # Type border background font
+        focused_workspace  $main_brdr   $main_bg   $main_text
+        active_workspace   $main_brdr   $main_bg   $main_text
+        inactive_workspace $unf_brdr    $unf_bg    $main_text
+        urgent_workspace   $urg_brdr    $urg_bg    $urg_text
+    }
+    position top
+    status_command i3status -c ~/.i3/i3status.conf
+}
+#####################
+#####################
+
+
+## Window class assignments
+#####################
+for_window [window_role="pop-up"] floating enable
+for_window [class="VirtualBox"] floating enable
+for_window [class="Vlc"] floating enable
+for_window [class="Guake"] floating enable
+for_window [class="Xfce4-panel"] floating enable
+for_window [class="Mirage"] floating enable
+for_window [title="Hangouts"] floating enable
+for_Window [title="File Operation Progress"] floating enable
+
+assign [class="Google"] $ws1
+assign [class="Spotify"] $ws3
+assign [class="Vlc"] $ws3
+assign [class="VirtualBox"] $ws4
+#####################
+#####################
+
+
+## Run startup processes
+#####################
+# Start authentication for GUI apps that need it
+# To be removed. Now used in .xinitrc
+#exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
+# Set background using feh script
+exec --no-startup-id sh ~/bin/feh_background.sh
+
+# Enable "real" transparency
+exec --no-startup-id sleep 3 && xcompmgr
+
+# xfce4 panel
+exec --no-startup-id xfce4-panel --disable-wm-check
+
+# Guake
+# To be removed. Now used in .xinitrc
+#exec --no-startup-id sleep 3 && guake
+
+# Autolock
+exec --no-startup-id xautolock -time 5 -locker ~/bin/screenoff.sh &
+#####################
+#####################
