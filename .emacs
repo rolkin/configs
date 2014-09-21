@@ -1,7 +1,7 @@
 ;; ===== Set the highlight current line minor mode ===== 
 ;; In every buffer, the line which contains the cursor will be fully
 ;; highlighted
-;;(global-hl-line-mode 1)
+(global-hl-line-mode 1)
 
 ;; ===== Set standard indent to 2 rather that 4 ====
 (setq standard-indent 2)
@@ -59,8 +59,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
- '(custom-enabled-themes (quote (tsdh-dark)))
- '(custom-safe-themes (quote ("fe80d0872802d63a60804e8424da0e24c773d97b8b703c3a4e9f8bf07a1153fc" "ee4c624abaff9965a0cfd75794c15d8b6f21a3de16f14bd81edc13944df084f8" default))))
+ '(custom-enabled-themes (quote (tango-dark)))
+ '(custom-safe-themes (quote ("fe80d0872802d63a60804e8424da0e24c773d97b8b703c3a4e9f8bf07a1153fc" "ee4c624abaff9965a0cfd75794c15d8b6f21a3de16f14bd81edc13944df084f8" default)))
+ '(inhibit-startup-screen t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

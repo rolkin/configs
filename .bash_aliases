@@ -1,10 +1,6 @@
 alias l='ls -aCF'
-alias ll='ls -aCF'
 alias la='ls -aCF'
-alias lll='ls -alF'
-
-alias cd..='cd ../'
-alias cdesk='cd ~/Desktop'
+alias ll='ls -ahlF'
 
 alias e='emacs -nw --no-splash'
 
