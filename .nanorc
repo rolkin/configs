@@ -60,7 +60,7 @@ set const
 ## searches.  They cannot contain blank characters.  The former set must
 ## come before the latter set, and both must be in the same order.
 ##
-# set matchbrackets "(<[{)>]}"
+set matchbrackets "(<[{)>]}"
 
 ## Use the blank line below the titlebar as extra editing space.
 # set morespace
