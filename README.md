@@ -3,7 +3,7 @@ rolkin's configs
 
 ## Bug fixes
 
-Please feel free to [contact](http://github.com/rolkin/configs) me for any bug fixes
+Feel free to [contact](https://github.com/rolkin/configs) me for any bug fixes
 
 
 -----------
